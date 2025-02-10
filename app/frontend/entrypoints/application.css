@@ -17,6 +17,17 @@
   box-sizing: border-box;
 }
 
+.toggle-button {
+  background-color: var(--ms-color-neutral-200);
+  border-bottom: 1px solid var(--ms-color-neutral-200);
+  border-radius: 0;
+}
+
+.toggle-button.selected {
+  background-color: var(--ms-color-white);
+  border-bottom: 1px solid white;
+}
+
 .ms\:button-spinner {
   width: 24px;
   height: 24px;
