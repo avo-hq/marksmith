@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    marksmith (0.1.2)
+    marksmith (0.1.3)
       activesupport
       redcarpet
 

@@ -829,8 +829,8 @@
 .ms\:cursor-pointer {
   cursor: pointer;
 }
-.ms\:resize-y {
-  resize: vertical;
+.ms\:resize-none {
+  resize: none;
 }
 .ms\:flex-col {
   flex-direction: column;
