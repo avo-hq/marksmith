@@ -21,6 +21,10 @@ module Marksmith
       content_tag "md-#{name}", marksmith_toolbar_svg(name), title: t("marksmith.#{name.to_s.gsub("-", "_")}").humanize, class: marksmith_button_classes
     end
 
+    def marksmith_toggle_button_classes
+      class_names(marksmith_button_classes, "ms:bg-neutral-200 ms:border-0 ms:bg-none ms:text-sm ms:hover:bg-neutral-300 ms:uppercase ms:text-xs ms:font-semibold ms:text-neutral-800")
+    end
+
     # TODO: maybe inline svgs in the future
     def marksmith_toolbar_svg(name)
       image_tag asset_path("marksmith/svgs/#{name}.svg"), class: "ms:inline ms:size-4"

@@ -1,0 +1,32 @@
+<% toolbar_button_classes = "ms:cursor-pointer ms:hover:bg-neutral-100 ms:px-1 ms:py-px ms:rounded ms:text-sm" %>
+<%= content_tag :div, class: "ms:flex ms:flex-1 ms:flex-col ms:size-full", data: { marksmith_target: "fieldContainer" } do %>
+  <%= text_area_tag field_name, value,
+    id: name,
+    class: class_names("ms:flex ms:flex-1 ms:rounded ms:border-none ms:resize-none ms:focus:outline-none ms:font-mono ms:focus:ring-0 ms:leading-normal ms:p-2 ms:text-sm", classes),
+    rows: rows,
+    data: {
+      action: "drop->marksmith#dropUpload paste->marksmith#pasteUpload",
+      marksmith_target: "fieldElement",
+      **data_attributes
+    },
+    disabled:,
+    placeholder:,
+    autofocus:,
+    style:
+  %>
+  <div class="ms:flex ms:flex-1 ms:flex-grow ms:space-x-2 ms:py-1 ms:border-t ms:border-neutral-300 ms:px-2 ms:font-sans ms:text-sm ms:p-2">
+    <%= link_to "https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax", target: "_blank", class: class_names("ms:flex ms:items-center ms:text-neutral-800 ms:no-underline", toolbar_button_classes) do %>
+      <%= image_tag asset_path("marksmith/svgs/markdown.svg"), class: "ms:inline ms:size-4 ms:mr-1" %> <%= t("marksmith.markdown_is_supported").humanize %>
+    <% end %>
+    <% if enable_file_uploads %>
+      <%= button_tag data: { action: "click->marksmith#buttonUpload" }, class: class_names("ms:bg-none ms:border-none ms:bg-transparent ms:text-neutral-600 ms:items-center ms:flex", toolbar_button_classes) do %>
+        <%= image_tag asset_path("marksmith/svgs/paperclip.svg"), class: "ms:inline ms:size-4 ms:mr-1" %> <%= t("marksmith.upload_files").humanize %>
+      <% end %>
+    <% end %>
+    <% if gallery_enabled %>
+      <%= link_to gallery_full_path, data: { turbo_frame: gallery_turbo_frame }, class: class_names("ms:flex ms:items-center ms:text-neutral-800 ms:no-underline", toolbar_button_classes) do %>
+        <%= image_tag asset_path("marksmith/svgs/gallery.svg"), class: "ms:inline ms:size-4 ms:mr-1" %> <%= t("marksmith.attach_from_gallery").humanize %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
