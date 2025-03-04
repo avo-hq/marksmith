@@ -11,17 +11,15 @@
 @source "./../../views/";
 @source "./../../helpers/";
 @source "./../../../lib/";
+@source "./../../../test/dummy/app/views/";
 
-.marksmith,
-.marksmith * {
-  box-sizing: border-box;
+.marksmith-editor,
+.marksmith-editor * {
+  @apply ms:box-border;
 }
 
 .ms\:button-spinner {
-  width: 24px;
-  height: 24px;
-
-  position: relative;
+  @apply ms:relative ms:size-6;
 }
 
 .ms\:button-spinner > .double-bounce1,

@@ -1,16 +1,21 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Posts" %>
+<div class="ms:bg-white">
+  <div class="ms:mx-auto ms:max-w-7xl ms:px-6 ms:lg:px-8">
+    <div class="ms:mx-auto ms:max-w-2xl">
+      <h2 class="ms:text-pretty ms:text-4xl ms:font-semibold ms:tracking-tight ms:text-gray-900 ms:sm:text-5xl">Dummy blog</h2>
+      <p class="mt-2 ms:text-lg ms:leading-8 ms:text-gray-600">Edit or <%= link_to "create a new post", new_post_path %>.</p>
+      <div class="mt-10 ms:space-y-16 ms:border-t ms:border-gray-200 ms:pt-10 ms:sm:mt-16 ms:sm:pt-16">
+        <% @posts.each do |post| %>
+          <%= render post %>
 
-<h1>Posts</h1>
-
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-  <% end %>
+          <p>
+            <%= link_to "Show this post", post %>
+            <br>
+            <%= link_to "Edit this post", edit_post_path(post) %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New post", new_post_path %>
