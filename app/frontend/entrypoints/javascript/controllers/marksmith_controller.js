@@ -33,9 +33,8 @@ export default class extends Controller {
   switchToWrite(event) {
     event.preventDefault()
 
-    // toggle buttons
-    this.writeTabButtonTarget.classList.add('ms:hidden')
-    this.previewTabButtonTarget.classList.remove('ms:hidden')
+    this.writeTabButtonTarget.classList.add('selected')
+    this.previewTabButtonTarget.classList.remove('selected')
 
     // toggle write/preview buttons
     this.fieldContainerTarget.classList.remove('ms:hidden')
@@ -57,12 +56,11 @@ export default class extends Controller {
       responseKind: 'turbo-stream',
     })
 
+    this.writeTabButtonTarget.classList.remove('selected')
+    this.previewTabButtonTarget.classList.add('selected')
+
     // set the min height to the field element height
     this.previewElementTarget.style.minHeight = `${this.fieldElementTarget.offsetHeight}px`
-
-    // toggle buttons
-    this.writeTabButtonTarget.classList.remove('ms:hidden')
-    this.previewTabButtonTarget.classList.add('ms:hidden')
 
     // toggle elements
     this.fieldContainerTarget.classList.add('ms:hidden')
