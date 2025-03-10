@@ -1,44 +1,3 @@
-<%
-  data_attributes = local_assigns[:data] || {}
-  disabled = local_assigns[:disabled] || false
-  placeholder = local_assigns[:placeholder] || nil
-  autofocus = local_assigns[:autofocus] || false
-  style = local_assigns[:style] || nil
-  classes = local_assigns[:class] || nil
-  rows = local_assigns[:rows] || 15
-  field_name = form&.field_name(name) || name
-  value = if defined?(form)
-    form.object.send(name)
-  else
-    local_assigns[:value] || nil
-  end
-  extra_preview_params = local_assigns[:extra_preview_params] || {}
-  upload_url = if local_assigns[:upload_url].present?
-    local_assigns[:upload_url]
-  elsif defined?(ActiveStorage)
-    main_app.rails_direct_uploads_url
-  end
-
-  enable_file_uploads = if upload_url.blank?
-      false
-    elsif local_assigns[:enable_file_uploads].nil?
-      true
-    else
-      local_assigns[:enable_file_uploads]
-    end
-
-
-  # Used by Avo and other adapters to enable the gallery link.
-  gallery_enabled = local_assigns.dig(:gallery, :enabled) || false
-  gallery_open_path = local_assigns.dig(:gallery, :open_path) || nil
-  gallery_params = local_assigns.dig(:gallery, :params) || {}
-  if gallery_open_path.present?
-    gallery_full_path = gallery_open_path + "?" + gallery_params.map { |k,v| "#{k}=#{v}" }.join('&')
-  else
-    gallery_full_path = nil
-  end
-  gallery_turbo_frame = local_assigns.dig(:gallery, :turbo_frame) || nil
-%>
 <%= content_tag :div,
   class: "marksmith ms:block ms:flex-col ms:w-full ms:border ms:border-neutral-300 ms:rounded ms:@container ms:focus-within:border-neutral-400",
   data: {
@@ -49,79 +8,15 @@
     ",
     unique_selector: ".#{@input_id}", # used to pinpoint the exact element in which to insert the attachment
     marksmith_preview_url_value: marksmith.markdown_previews_path,
-    marksmith_file_uploads_enabled_value: enable_file_uploads,
+    marksmith_file_uploads_enabled_value: editor.enable_file_uploads,
     marksmith_active_tab_class: "bg-white",
-    marksmith_attach_url_value: upload_url,
-    marksmith_extra_preview_params_value: extra_preview_params.as_json,
-    **local_assigns.fetch(:controller_data_attributes, {})
+    marksmith_attach_url_value: editor.upload_url,
+    marksmith_extra_preview_params_value: editor.extra_preview_params.as_json,
+    **editor.controller_data_attributes,
   } do %>
-  <% toggle_button_classes = class_names(marksmith_button_classes, "ms:bg-neutral-200 ms:border-0 ms:bg-none ms:text-sm ms:hover:bg-neutral-300 ms:uppercase ms:text-xs ms:font-semibold ms:text-neutral-800") %>
-  <div class="ms:flex-1 ms:flex-col-reverse ms:@md:flex-row ms:grow ms:flex  ms:justify-bewteen ms:bg-neutral-50 ms:rounded ms:px-2 ms:py-1 ms:gap-y-1">
-    <div class="ms:flex-1 ms:flex ms:items:center">
-      <button class="<%= toggle_button_classes %>" data-action="click->marksmith#switchToPreview" data-marksmith-target="previewTabButton" type="button">
-        <%= t('marksmith.preview').humanize %>
-      </button>
-      <button class="<%= toggle_button_classes %> ms:hidden ms:bg-neutral-200" data-action="click->marksmith#switchToWrite" data-marksmith-target="writeTabButton" type="button">
-        <%= t('marksmith.write').humanize %>
-      </button>
-    </div>
-
-    <markdown-toolbar for="<%= name %>" class="<%= class_names("ms:flex ms:flex-wrap", "ms:pointer-events-none": disabled) %>" data-marksmith-target="toolbar">
-      <%= marksmith_toolbar_button "bold" %>
-      <%= marksmith_toolbar_button "header" %>
-      <%= marksmith_toolbar_button "italic" %>
-      <%= marksmith_toolbar_button "quote" %>
-      <%= marksmith_toolbar_button "code" %>
-      <%= marksmith_toolbar_button "link" %>
-      <%= marksmith_toolbar_button "image" %>
-      <%= marksmith_toolbar_button "unordered-list" %>
-      <%= marksmith_toolbar_button "ordered-list" %>
-      <%= marksmith_toolbar_button "task-list" %>
-    </markdown-toolbar>
-  </div>
-  <% toolbar_button_classes = "ms:cursor-pointer ms:hover:bg-neutral-100 ms:px-1 ms:py-px ms:rounded ms:text-sm" %>
+  <%= render partial: "marksmith/shared/toolbar", locals: { name: editor.name, disabled: editor.disabled } %>
   <div class="ms:border-t ms:w-full ms:border-neutral-300 ms:flex ms:flex-1">
-    <%= content_tag :div, class: "ms:flex ms:flex-1 ms:flex-col ms:size-full", data: { marksmith_target: "fieldContainer" } do %>
-      <%= text_area_tag field_name, value,
-        id: name,
-        class: class_names("ms:flex ms:flex-1 ms:rounded ms:border-none ms:resize-none ms:focus:outline-none ms:font-mono ms:focus:ring-0 ms:leading-normal ms:p-2 ms:text-sm", classes),
-        rows: rows,
-        data: {
-          action: "drop->marksmith#dropUpload paste->marksmith#pasteUpload",
-          marksmith_target: "fieldElement",
-          **data_attributes
-        },
-        disabled:,
-        placeholder:,
-        autofocus:,
-        style:
-      %>
-      <div class="ms:flex ms:flex-1 ms:flex-grow ms:space-x-2 ms:py-1 ms:border-t ms:border-neutral-300 ms:px-2 ms:font-sans ms:text-sm ms:p-2">
-        <%= link_to "https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax", target: "_blank", class: class_names("ms:flex ms:items-center ms:text-neutral-800 ms:no-underline", toolbar_button_classes) do %>
-          <%= image_tag asset_path("marksmith/svgs/markdown.svg"), class: "ms:inline ms:size-4 ms:mr-1" %> <%= t("marksmith.markdown_is_supported").humanize %>
-        <% end %>
-        <% if enable_file_uploads %>
-          <%= button_tag data: { action: "click->marksmith#buttonUpload" }, class: class_names("ms:bg-none ms:border-none ms:bg-transparent ms:text-neutral-600 ms:items-center ms:flex", toolbar_button_classes) do %>
-            <%= image_tag asset_path("marksmith/svgs/paperclip.svg"), class: "ms:inline ms:size-4 ms:mr-1" %> <%= t("marksmith.upload_files").humanize %>
-          <% end %>
-        <% end %>
-        <% if gallery_enabled %>
-          <%= link_to gallery_full_path, data: { turbo_frame: gallery_turbo_frame }, class: class_names("ms:flex ms:items-center ms:text-neutral-800 ms:no-underline", toolbar_button_classes) do %>
-            <%= image_tag asset_path("marksmith/svgs/gallery.svg"), class: "ms:inline ms:size-4 ms:mr-1" %> <%= t("marksmith.attach_from_gallery").humanize %>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
-    <%= content_tag :div,
-      class: "ms:hidden ms:markdown-preview ms:size-full ms:flex-1 ms:flex ms:size-full ms:p-2 ms:overflow-auto",
-      id: "markdown-preview-#{name}",
-      data: {
-        marksmith_target: "previewElement",
-      } do %>
-      <div class="ms:button-spinner">
-        <div class="double-bounce1"></div>
-        <div class="double-bounce2"></div>
-      </div>
-    <% end %>
+    <%= render partial: "marksmith/shared/editor_pane", locals: { editor: } %>
+    <%= render partial: "marksmith/shared/preview_pane", locals: { name: editor.name } %>
   </div>
 <% end %>
