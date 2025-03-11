@@ -7,6 +7,8 @@ module Marksmith
     def render
       if Marksmith.configuration.parser == "commonmarker"
         render_commonmarker
+      elsif Marksmith.configuration.parser == "kramdown"
+        render_kramdown
       else
         render_redcarpet
       end
@@ -14,7 +16,7 @@ module Marksmith
 
     def render_commonmarker
       # commonmarker expects an utf-8 encoded string
-      body = @body.to_s.dup.force_encoding('utf-8')
+      body = @body.to_s.dup.force_encoding("utf-8")
       Commonmarker.to_html(body)
     end
 
@@ -33,6 +35,11 @@ module Marksmith
         quote: true,
         with_toc_data: true
       ).render(@body)
+    end
+
+    def render_kramdown
+      body = @body.to_s.dup.force_encoding("utf-8")
+      Kramdown::Document.new(body).to_html
     end
   end
 end

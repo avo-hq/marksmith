@@ -156,7 +156,7 @@ end
 
 ## Built-in preview renderer
 
-The renderer is powered by [`Commonmarker`](https://github.com/gjtorikian/commonmarker) by default but it can be changed to [`Redcarpet`](https://github.com/vmg/redcarpet) in the configuration or add your own logic by customizing the `Marksmith::Renderer` model.
+The renderer is powered by [`Commonmarker`](https://github.com/gjtorikian/commonmarker) by default but it can be changed to [`Redcarpet`](https://github.com/vmg/redcarpet) or ['kramdown'](https://github.com/gettalong/kramdown) in the configuration or add your own logic by customizing the `Marksmith::Renderer` model.
 It supports basic styles like headings, `strong`, `italic` and others.
 
 In your `show.html.erb` view or the place where you want to render the compiled markup use the `marksmithed` helper and it will run the content through the renderer.
@@ -176,7 +176,7 @@ In your `show.html.erb` view or the place where you want to render the compiled 
 
 ## Customize the renderer
 
-Marksmith comes with a default renderer that uses `Commonmarker` by default but it can be changed to `Redcarpet` in the configuration.
+Marksmith comes with a default renderer that uses `commonmarker` by default but it can be changed to `redcarpet` or `kramdown` in the configuration.
 
 ```ruby
 # config/initializers/marksmith.rb
