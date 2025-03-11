@@ -1,5 +1,5 @@
 <%= content_tag :div,
-  class: "marksmith ms:block ms:flex-col ms:w-full ms:border ms:border-neutral-300 ms:rounded ms:@container ms:focus-within:border-neutral-400",
+  class: "marksmith ms:block ms:flex-col ms:w-full ms:border ms:border-neutral-500 ms:rounded-md ms:@container ms:focus-within:outline ms:outline-blue-500",
   data: {
     controller: "marksmith list-continuation",
     action: "
@@ -15,7 +15,7 @@
     **editor.controller_data_attributes,
   } do %>
   <%= render partial: "marksmith/shared/toolbar", locals: { name: editor.name, disabled: editor.disabled } %>
-  <div class="ms:border-t ms:w-full ms:border-neutral-300 ms:flex ms:flex-1">
+  <div class="ms:border-t ms:w-full ms:border-neutral-500 ms:flex ms:flex-1">
     <%= render partial: "marksmith/shared/editor_pane", locals: { editor: } %>
     <%= render partial: "marksmith/shared/preview_pane", locals: { name: editor.name } %>
   </div>

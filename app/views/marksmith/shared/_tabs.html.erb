@@ -1,8 +1,8 @@
 <div class="ms:flex-1 ms:flex ms:items:center">
-  <button class="<%= marksmith_toggle_button_classes %>" data-action="click->marksmith#switchToPreview" data-marksmith-target="previewTabButton" type="button">
-    <%= t('marksmith.preview').humanize %>
-  </button>
-  <button class="<%= marksmith_toggle_button_classes %> ms:hidden ms:bg-neutral-200" data-action="click->marksmith#switchToWrite" data-marksmith-target="writeTabButton" type="button">
+  <button class="<%= marksmith_tab_classes %> active" data-action="click->marksmith#switchToWrite" data-marksmith-target="writeTabButton" type="button">
     <%= t('marksmith.write').humanize %>
+  </button>
+  <button class="<%= marksmith_tab_classes %>" data-action="click->marksmith#switchToPreview" data-marksmith-target="previewTabButton" type="button">
+    <%= t('marksmith.preview').humanize %>
   </button>
 </div>

@@ -4,8 +4,8 @@ module Marksmith
 
     initializer "marksmith.view_helpers" do
       ActiveSupport.on_load :action_view do
-        require "marksmith/helper"
-        ActionView::Base.include Marksmith::Helper
+        require_relative "../../app/helpers/marksmith/marksmith_helper"
+        ActionView::Base.include Marksmith::MarksmithHelper
 
         module FormBuilderExtensions
           def marksmith(*args, **kwargs, &block)

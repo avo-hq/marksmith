@@ -1,8 +1,8 @@
 <%= content_tag :div,
-  class: "ms:hidden ms:markdown-preview ms:size-full ms:flex-1 ms:flex ms:size-full ms:p-2 ms:overflow-auto",
+  class: "ms:hidden ms:markdown-preview ms:size-full ms:flex-1 ms:flex ms:size-full ms:p-2 ms:overflow-auto ms:bg-white ms:dark:bg-neutral-800 ms:rounded-b-md",
   id: "markdown-preview-#{name}",
   data: {
-    marksmith_target: "previewElement",
+    marksmith_target: "previewPane",
   } do %>
   <%= render partial: "marksmith/shared/loading_indicator" %>
 <% end %>

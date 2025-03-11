@@ -9,6 +9,8 @@
 @plugin "@tailwindcss/typography";
 
 @source "./../../views/";
+@source "./javascript/controllers/";
+@source "./../../../test/dummy/app/views/";
 @source "./../../helpers/";
 @source "./../../../lib/";
 

@@ -1,5 +1,8 @@
-<div class="ms:flex-1 ms:flex-col-reverse ms:@md:flex-row ms:grow ms:flex  ms:justify-bewteen ms:bg-neutral-50 ms:rounded ms:px-2 ms:py-1 ms:gap-y-1">
+<%= tag.div class: class_names(
+  "ms:flex-1 ms:flex-col-reverse ms:@md:flex-row ms:grow ms:flex  ms:justify-bewteen ms:bg-neutral-50 ms:rounded-t-md ms:gap-y-1",
+  "ms:dark:bg-neutral-700 ms:dark:text-neutral-200"
+) do %>
   <%= render partial: "marksmith/shared/tabs" %>
 
   <%= render partial: "marksmith/shared/action_bar", locals: { name:, disabled: } %>
-</div>
+<% end %>

@@ -373,6 +373,9 @@
 .ms\:pointer-events-none {
   pointer-events: none;
 }
+.ms\:-my-px {
+  margin-block: -1px;
+}
 .ms\:prose {
   color: var(--tw-prose-body);
   max-width: 65ch;
@@ -788,8 +791,8 @@
     margin-bottom: 0;
   }
 }
-.ms\:mr-1 {
-  margin-right: calc(var(--ms-spacing) * 1);
+.ms\:-ml-px {
+  margin-left: -1px;
 }
 .ms\:block {
   display: block;
@@ -850,6 +853,9 @@
 .ms\:items-center {
   align-items: center;
 }
+.ms\:gap-1 {
+  gap: calc(var(--ms-spacing) * 1);
+}
 .ms\:gap-y-1 {
   row-gap: calc(var(--ms-spacing) * 1);
 }
@@ -866,13 +872,16 @@
 .ms\:rounded {
   border-radius: 0.25rem;
 }
+.ms\:rounded-md {
+  border-radius: var(--ms-radius-md);
+}
+.ms\:rounded-t-md {
+  border-top-left-radius: var(--ms-radius-md);
+  border-top-right-radius: var(--ms-radius-md);
+}
 .ms\:border {
   border-style: var(--tw-border-style);
   border-width: 1px;
-}
-.ms\:border-0 {
-  border-style: var(--tw-border-style);
-  border-width: 0px;
 }
 .ms\:border-t {
   border-top-style: var(--tw-border-style);
@@ -885,11 +894,11 @@
 .ms\:border-neutral-300 {
   border-color: var(--ms-color-neutral-300);
 }
+.ms\:border-transparent {
+  border-color: transparent;
+}
 .ms\:bg-neutral-50 {
   background-color: var(--ms-color-neutral-50);
-}
-.ms\:bg-neutral-200 {
-  background-color: var(--ms-color-neutral-200);
 }
 .ms\:bg-transparent {
   background-color: transparent;
@@ -937,6 +946,9 @@
   --tw-font-weight: var(--ms-font-weight-semibold);
   font-weight: var(--ms-font-weight-semibold);
 }
+.ms\:text-neutral-300 {
+  color: var(--ms-color-neutral-300);
+}
 .ms\:text-neutral-600 {
   color: var(--ms-color-neutral-600);
 }
@@ -948,6 +960,9 @@
 }
 .ms\:no-underline {
   text-decoration-line: none;
+}
+.ms\:opacity-0 {
+  opacity: 0%;
 }
 .ms\:prose-neutral {
   --tw-prose-body: oklch(0.371 0 0);
@@ -999,17 +1014,17 @@
     }
   }
 }
-.ms\:hover\:bg-neutral-200 {
-  &:hover {
-    @media (hover: hover) {
-      background-color: var(--ms-color-neutral-200);
-    }
-  }
-}
 .ms\:hover\:bg-neutral-300 {
   &:hover {
     @media (hover: hover) {
       background-color: var(--ms-color-neutral-300);
+    }
+  }
+}
+.ms\:hover\:bg-transparent {
+  &:hover {
+    @media (hover: hover) {
+      background-color: transparent;
     }
   }
 }
@@ -1028,6 +1043,87 @@
 .ms\:\@md\:flex-row {
   @container (width >= 28rem) {
     flex-direction: row;
+  }
+}
+.ms\:dark\:bg-gray-900 {
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--ms-color-gray-900);
+  }
+}
+.ms\:dark\:bg-neutral-700 {
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--ms-color-neutral-700);
+  }
+}
+.ms\:dark\:bg-neutral-800 {
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--ms-color-neutral-800);
+  }
+}
+.ms\:dark\:text-gray-50 {
+  @media (prefers-color-scheme: dark) {
+    color: var(--ms-color-gray-50);
+  }
+}
+.ms\:dark\:text-neutral-200 {
+  @media (prefers-color-scheme: dark) {
+    color: var(--ms-color-neutral-200);
+  }
+}
+.ms\:dark\:text-neutral-300 {
+  @media (prefers-color-scheme: dark) {
+    color: var(--ms-color-neutral-300);
+  }
+}
+.ms\:dark\:hover\:bg-neutral-600 {
+  @media (prefers-color-scheme: dark) {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--ms-color-neutral-600);
+      }
+    }
+  }
+}
+.ms\:\[\.active\]\:rounded-t-md {
+  &:is(.active) {
+    border-top-left-radius: var(--ms-radius-md);
+    border-top-right-radius: var(--ms-radius-md);
+  }
+}
+.ms\:\[\.active\]\:border-neutral-300 {
+  &:is(.active) {
+    border-color: var(--ms-color-neutral-300);
+  }
+}
+.ms\:\[\.active\]\:bg-transparent {
+  &:is(.active) {
+    background-color: transparent;
+  }
+}
+.ms\:\[\.active\]\:text-neutral-300 {
+  &:is(.active) {
+    color: var(--ms-color-neutral-300);
+  }
+}
+.ms\:\[\.active\]\:dark\:border-neutral-300 {
+  &:is(.active) {
+    @media (prefers-color-scheme: dark) {
+      border-color: var(--ms-color-neutral-300);
+    }
+  }
+}
+.ms\:\[\.active\]\:dark\:border-b-neutral-800 {
+  &:is(.active) {
+    @media (prefers-color-scheme: dark) {
+      border-bottom-color: var(--ms-color-neutral-800);
+    }
+  }
+}
+.ms\:\[\.active\]\:dark\:bg-neutral-800 {
+  &:is(.active) {
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--ms-color-neutral-800);
+    }
   }
 }
 .marksmith, .marksmith * {

@@ -1,4 +1,7 @@
-<markdown-toolbar for="<%= name %>" class="<%= class_names("ms:flex ms:flex-wrap", "ms:pointer-events-none": disabled) %>" data-marksmith-target="toolbar">
+<%= tag.markdown_toolbar for: name,
+  class: class_names("ms:flex ms:flex-wrap ms:px-2 ms:py-1", "ms:pointer-events-none": disabled),
+  data: { marksmith_target: "toolbar" } do
+%>
   <%= marksmith_toolbar_button "bold" %>
   <%= marksmith_toolbar_button "header" %>
   <%= marksmith_toolbar_button "italic" %>
@@ -9,4 +12,4 @@
   <%= marksmith_toolbar_button "unordered-list" %>
   <%= marksmith_toolbar_button "ordered-list" %>
   <%= marksmith_toolbar_button "task-list" %>
-</markdown-toolbar>
+<% end %>
