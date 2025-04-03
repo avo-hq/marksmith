@@ -18,7 +18,7 @@
 
   <div class="w-full">
     <%= form.label :body, style: "display: block" %>
-    <div style="width: 650px; resize: both; overflow: auto; padding: 10px;">
+    <div style="width: 650px; resize: both; overflow: auto;">
       <%#= form.marksmith :body, disabled: false, style: "border: 1px solid red;", placeholder: "Enter your markdown body here" %>
       <%= form.marksmith :body, enable_file_uploads: true, upload_url: nil %>
     </div>
