@@ -13,7 +13,8 @@ class Marksmith::Editor
     :style,
     :gallery,
     :kwargs,
-    :id
+    :id,
+    :rows
 
   def initialize(name:,
     upload_url: nil,
@@ -31,6 +32,7 @@ class Marksmith::Editor
     value: nil,
     id: "marksmith-instance-#{rand(1000..9999)}",
     gallery: {},
+    rows: 11,
     **kwargs)
     @name = name
     @kwargs = kwargs
@@ -50,6 +52,7 @@ class Marksmith::Editor
     @value = value
     @id = id
     @gallery = gallery
+    @rows = rows
   end
 
   def gallery_enabled
