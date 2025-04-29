@@ -5,4 +5,3 @@ module Marksmith
     end
   end
 end
-

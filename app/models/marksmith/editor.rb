@@ -23,7 +23,7 @@ class Marksmith::Editor
     form: nil,
     disabled: false,
     controller_data_attributes: {},
-    classes: nil,
+    classes: {},
     data_attributes: {},
     placeholder: nil,
     autofocus: false,
@@ -50,6 +50,17 @@ class Marksmith::Editor
     @value = value
     @id = id
     @gallery = gallery
+  end
+
+  def element_classes(element, **options)
+    # backwards compatibility
+    @classes = { textarea: @classes } if @classes.is_a?(String)
+
+    [
+      "ms--#{element.to_s.gsub('_', '-')}",
+      Marksmith::DefaultClasses.for(element, **options),
+      @classes[element]
+    ].compact_blank.join(" ")
   end
 
   def gallery_enabled

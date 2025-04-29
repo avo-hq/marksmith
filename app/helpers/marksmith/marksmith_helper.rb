@@ -19,36 +19,14 @@ module Marksmith
       javascript_include_tag("marksmith.esm.js", *args, **kwargs)
     end
 
-    def marksmith_button_classes
-      class_names(
-        "ms:flex ms:items:center ms:cursor-pointer ms:py-1 ms:px-1.5 ms:hover:bg-neutral-200 ms:rounded",
-        "ms:dark:text-neutral-300 ms:dark:hover:bg-neutral-600"
-      )
-    end
-
-    def marksmith_toolbar_button(name, hotkey_scope: nil, hotkey: nil, **kwargs)
+    def marksmith_toolbar_button(name, hotkey_scope: nil, hotkey: nil, editor: nil, **kwargs)
       content_tag "md-#{name}", marksmith_toolbar_svg(name),
         title: t("marksmith.#{name.to_s.gsub("-", "_")}").humanize,
-        class: marksmith_button_classes,
+        class: editor&.element_classes(:toolbar_button),
         data: {
           hotkey_scope:,
           hotkey:
         }
-    end
-
-    def marksmith_tab_classes
-      class_names(
-        # marksmith_button_classes,
-        "marksmith-toggle-button ms:text-sm ms:hover:bg-neutral-300 ms:text-sm ms:font-medium ms:cursor-pointer ms:text-neutral-500 ms:px-3",
-        # borders
-        "ms:bg-transparent ms:hover:bg-transparent",
-        "ms:-my-px ms:-ml-px ms:border ms:border-transparent",
-        "ms:h-[calc(100%+3px)] ms:border-b-none",
-        # "ms:border-b-neutral-00",
-        # active classes
-        "ms:[.active]:bg-neutral-50 ms:[.active]:text-neutral-900 ms:dark:[.active]:text-neutral-300 ms:[.active]:dark:bg-neutral-800 ms:[.active]:dark:border-neutral-500 ms:[.active]:rounded-t-md ms:[.active]:border-neutral-500",
-
-      )
     end
 
     def marksmith_inline_svg(path)
