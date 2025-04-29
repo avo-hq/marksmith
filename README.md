@@ -98,6 +98,8 @@ or
 <%= form.marksmith :body %>
 ```
 
+The value is stored in the database as plain text 🙌
+
 ## Configuration
 
 Marksmith accepts a few configuration options.
