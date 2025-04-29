@@ -104,7 +104,7 @@ Marksmith accepts a few configuration options.
 
 ### Field options
 
-The field supports a few of the regular options like `disabled`, `placeholder`, `autofocus`, `style`, `class`, `data`, and `value`, but also a custom one.
+The field supports a few of the regular options like `disabled`, `placeholder`, `autofocus`, `style`, `data`, and `value`, but also a custom one.
 
 `extra_preview_params` - Sends extra params to the preview renderer.
 
@@ -112,13 +112,21 @@ The field supports a few of the regular options like `disabled`, `placeholder`, 
 
 `upload_url` - The URL to use for file uploads. If not provided, the editor will use the `rails_direct_uploads_url` helper.
 
+`classes` - A hash of classes to be applied to the editor.
+
 ```erb
 <%= marksmith_tag :body,
   disabled: true,
   placeholder: "Write your best markdown here.",
   extra_preview_params: { foo: "bar" },
   enable_file_uploads: true,
-  upload_url: nil
+  upload_url: nil,
+  classes: {
+    textarea: "bg-red-500",
+    editor_pane: "bg-blue-500",
+    preview_pane: "bg-green-500",
+    action_bar: "bg-yellow-500",
+  }
   %>
 ```
 

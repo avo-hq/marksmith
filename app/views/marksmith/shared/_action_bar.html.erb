@@ -1,15 +1,15 @@
 <%= tag.markdown_toolbar for: textarea_id,
-  class: class_names("ms:flex ms:flex-wrap ms:px-2 ms:py-1", "ms:pointer-events-none": disabled),
+  class: editor.element_classes(:action_bar, disabled:),
   data: { marksmith_target: "toolbar" } do
 %>
-  <%= marksmith_toolbar_button "bold",           hotkey: "Meta+b", hotkey_scope: textarea_id %>
-  <%= marksmith_toolbar_button "header",         hotkey: "Meta+h", hotkey_scope: textarea_id %>
-  <%= marksmith_toolbar_button "italic",         hotkey: "Meta+i", hotkey_scope: textarea_id %>
-  <%= marksmith_toolbar_button "quote" %>
-  <%= marksmith_toolbar_button "code" %>
-  <%= marksmith_toolbar_button "link" %>
-  <%= marksmith_toolbar_button "image" %>
-  <%= marksmith_toolbar_button "unordered-list" %>
-  <%= marksmith_toolbar_button "ordered-list" %>
-  <%= marksmith_toolbar_button "task-list" %>
+  <%= marksmith_toolbar_button "bold",           hotkey: "Meta+b", hotkey_scope: textarea_id, editor: %>
+  <%= marksmith_toolbar_button "header",         hotkey: "Meta+h", hotkey_scope: textarea_id, editor: %>
+  <%= marksmith_toolbar_button "italic",         hotkey: "Meta+i", hotkey_scope: textarea_id, editor: %>
+  <%= marksmith_toolbar_button "quote",          editor: %>
+  <%= marksmith_toolbar_button "code",           editor: %>
+  <%= marksmith_toolbar_button "link",           editor: %>
+  <%= marksmith_toolbar_button "image",          editor: %>
+  <%= marksmith_toolbar_button "unordered-list", editor: %>
+  <%= marksmith_toolbar_button "ordered-list",   editor: %>
+  <%= marksmith_toolbar_button "task-list",      editor: %>
 <% end %>
