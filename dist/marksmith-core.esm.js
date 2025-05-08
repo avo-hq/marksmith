@@ -1,5 +1,5 @@
 /*!
-Marksmith 0.4.4
+Marksmith 0.4.5
 */
 import '@github/markdown-toolbar-element';
 import { Controller } from '@hotwired/stimulus';
