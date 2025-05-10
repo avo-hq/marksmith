@@ -2,7 +2,7 @@
   <%= text_area_tag editor.field_name, editor.value,
     id: editor.textarea_id,
     class: class_names(
-      "ms:flex ms:flex-1 ms:border-none ms:resize-none ms:focus:outline-none ms:font-mono ms:focus:ring-0 ms:leading-normal ms:p-2 ms:text-sm ms:field-sizing-content ms:min-h-60",
+      "ms:flex ms:flex-1 ms:border-none ms:resize-none ms:focus:outline-none ms:font-mono ms:focus:ring-0 ms:leading-normal ms:p-2 ms:text-sm ms:field-sizing-content",
       "ms:dark:bg-neutral-800 ms:dark:text-neutral-200",
       editor.classes
     ),
@@ -14,7 +14,8 @@
     disabled: editor.disabled,
     placeholder: editor.placeholder,
     autofocus: editor.autofocus,
-    style: editor.style
+    style: editor.style,
+    rows: editor.rows
   %>
   <% toolbar_button_classes = "ms:cursor-pointer ms:hover:bg-neutral-200 ms:px-1 ms:py-px ms:rounded ms:text-sm ms:dark:text-neutral-300 ms:dark:hover:bg-neutral-600" %>
   <div class="ms:flex ms:flex-1 ms:flex-grow ms:space-x-2 ms:py-1 ms:border-t ms:border-neutral-500 ms:px-2 ms:font-sans ms:text-sm ms:p-2 ms:dark:bg-neutral-800 ms:dark:text-neutral-300 ms:rounded-b-md">

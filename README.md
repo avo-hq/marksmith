@@ -106,7 +106,7 @@ Marksmith accepts a few configuration options.
 
 ### Field options
 
-The field supports a few of the regular options like `disabled`, `placeholder`, `autofocus`, `style`, `class`, `data`, and `value`, but also a custom one.
+The field supports a few of the regular options like `disabled`, `placeholder`, `autofocus`, `style`, `class`, `data`, `rows` and `value`, but also a custom one.
 
 `extra_preview_params` - Sends extra params to the preview renderer.
 
