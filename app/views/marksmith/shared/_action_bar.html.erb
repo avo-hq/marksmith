@@ -1,5 +1,5 @@
 <%= tag.markdown_toolbar for: textarea_id,
-  class: class_names("ms:flex ms:flex-wrap ms:px-2 ms:py-1", "ms:pointer-events-none": disabled),
+  class: class_names("marksmith-action-bar ms:flex ms:flex-wrap ms:px-2 ms:py-1", "ms:pointer-events-none": disabled),
   data: { marksmith_target: "toolbar" } do
 %>
   <%= marksmith_toolbar_button "bold",           hotkey: "Meta+b", hotkey_scope: textarea_id %>
