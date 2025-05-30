@@ -1,4 +1,4 @@
-<%= content_tag :div, class: "ms:flex ms:flex-1 ms:flex-col ms:size-full", data: { marksmith_target: "fieldContainer" } do %>
+<%= content_tag :div, class: "marksmith-editor-pane ms:flex ms:flex-1 ms:flex-col ms:size-full", data: { marksmith_target: "fieldContainer" } do %>
   <%= text_area_tag editor.field_name, editor.value,
     id: editor.textarea_id,
     class: class_names(
@@ -17,17 +17,17 @@
     style: editor.style
   %>
   <% toolbar_button_classes = "ms:cursor-pointer ms:hover:bg-neutral-200 ms:px-1 ms:py-px ms:rounded ms:text-sm ms:dark:text-neutral-300 ms:dark:hover:bg-neutral-600" %>
-  <div class="ms:flex ms:flex-1 ms:flex-grow ms:space-x-2 ms:py-1 ms:border-t ms:border-neutral-500 ms:px-2 ms:font-sans ms:text-sm ms:p-2 ms:dark:bg-neutral-800 ms:dark:text-neutral-300 ms:rounded-b-md">
-    <%= link_to "https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax", target: "_blank", class: class_names("ms:flex ms:items-center ms:text-neutral-800 ms:no-underline ms:gap-1", toolbar_button_classes) do %>
+  <div class="marksmith-bottom-toolbar ms:flex ms:flex-1 ms:flex-grow ms:space-x-2 ms:py-1 ms:border-t ms:border-neutral-500 ms:px-2 ms:font-sans ms:text-sm ms:p-2 ms:dark:bg-neutral-800 ms:dark:text-neutral-300 ms:rounded-b-md">
+    <%= link_to "https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax", target: "_blank", class: class_names("marksmith-help-link ms:flex ms:items-center ms:text-neutral-800 ms:no-underline ms:gap-1", toolbar_button_classes) do %>
       <%= marksmith_inline_svg("app/assets/images/marksmith/svgs/markdown.svg") %> <span><%= t("marksmith.markdown_is_supported").humanize %></span>
     <% end %>
     <% if editor.enable_file_uploads %>
-      <%= button_tag data: { action: "click->marksmith#buttonUpload" }, class: class_names("ms:bg-none ms:border-none ms:bg-transparent ms:text-neutral-600 ms:items-center ms:flex ms:gap-1", toolbar_button_classes) do %>
+      <%= button_tag data: { action: "click->marksmith#buttonUpload" }, class: class_names("marksmith-upload-button ms:bg-none ms:border-none ms:bg-transparent ms:text-neutral-600 ms:items-center ms:flex ms:gap-1", toolbar_button_classes) do %>
         <%= marksmith_inline_svg("app/assets/images/marksmith/svgs/paperclip.svg") %> <span><%= t("marksmith.upload_files").humanize %></span>
       <% end %>
     <% end %>
     <% if editor.gallery_enabled %>
-      <%= link_to editor.gallery_full_path, data: { turbo_frame: editor.gallery_turbo_frame }, class: class_names("ms:flex ms:items-center ms:text-neutral-800 ms:no-underline ms:gap-1", toolbar_button_classes) do %>
+      <%= link_to editor.gallery_full_path, data: { turbo_frame: editor.gallery_turbo_frame }, class: class_names("marksmith-gallery-link ms:flex ms:items-center ms:text-neutral-800 ms:no-underline ms:gap-1", toolbar_button_classes) do %>
         <%= marksmith_inline_svg("app/assets/images/marksmith/svgs/gallery.svg") %> <span><%= t("marksmith.attach_from_gallery").humanize %></span>
       <% end %>
     <% end %>

@@ -1,6 +1,6 @@
 <%= content_tag :div,
   id: editor.id,
-  class: "marksmith ms:block ms:flex-col ms:w-full ms:border ms:border-neutral-500 ms:rounded-md ms:@container ms:focus-within:outline-2 ms:outline-blue-500 ms:-outline-offset-1",
+  class: "marksmith-editor-wrapper marksmith ms:block ms:flex-col ms:w-full ms:border ms:border-neutral-500 ms:rounded-md ms:@container ms:focus-within:outline-2 ms:outline-blue-500 ms:-outline-offset-1",
   data: {
     controller: "marksmith list-continuation",
     action: "
@@ -16,7 +16,7 @@
     **editor.controller_data_attributes,
   } do %>
   <%= render partial: "marksmith/shared/toolbar", locals: { textarea_id: editor.textarea_id, disabled: editor.disabled} %>
-  <div class="ms:border-t ms:w-full ms:border-neutral-500 ms:flex ms:flex-1">
+  <div class="marksmith-editor-content ms:border-t ms:w-full ms:border-neutral-500 ms:flex ms:flex-1">
     <%= render partial: "marksmith/shared/editor_pane", locals: { editor: } %>
     <%= render partial: "marksmith/shared/preview_pane", locals: { editor: } %>
   </div>
