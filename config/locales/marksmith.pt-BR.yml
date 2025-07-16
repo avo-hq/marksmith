@@ -1,0 +1,17 @@
+pt-BR:
+  marksmith:
+    attach_from_gallery: Anexar da galeria
+    bold: negrito
+    code: código
+    header: cabeçalho
+    image: imagem
+    italic: itálico
+    link: link
+    markdown_is_supported: Markdown é suportado
+    ordered_list: lista ordenada
+    preview: pré-visualização
+    quote: citação
+    task_list: lista de tarefas
+    unordered_list: lista não ordenada
+    upload_files: enviar arquivos
+    write: escrever
