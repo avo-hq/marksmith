@@ -1163,6 +1163,9 @@
 }
 .marksmith, .marksmith * {
   box-sizing: border-box;
+  & textarea.marksmith-textarea {
+    tab-size: var(--tab-size, 4);
+  }
 }
 .ms\:button-spinner {
   width: 24px;

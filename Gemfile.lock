@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    marksmith (0.4.5)
+    marksmith (0.4.6.pre)
       activesupport
 
 GEM
