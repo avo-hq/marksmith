@@ -9,7 +9,18 @@ module Marksmith
 
         module FormBuilderExtensions
           def marksmith(*args, **kwargs, &block)
-            @template.marksmith_tag(*args, **kwargs.merge(form: self), &block)
+            # If the template has a 'marksmith_tag' method, use it to call the 'marksmith_tag' method
+            # ViewComponent has 'helpers' method, and from 4.0.0 we need to use it to call the 'marksmith_tag' method
+            # Otherwise, fallback to the template and raise error
+            marksmith_caller_object = if @template.respond_to?(:marksmith_tag)
+              @template
+            elsif @template.respond_to?(:helpers) && @template.helpers.respond_to?(:marksmith_tag)
+              @template.helpers
+            else
+              @template
+            end
+
+            marksmith_caller_object.marksmith_tag(*args, **kwargs.merge(form: self), &block)
           end
         end
 

@@ -561,6 +561,18 @@ class marksmith_controller extends Controller {
     this.editor?.chain().focus().setAttachment(editorAttachments).run();
   }
 
+  indent(event) {
+    event.preventDefault();
+    // add a tab before the current cursor position
+    const start = this.fieldElementTarget.selectionStart;
+    const end = this.fieldElementTarget.selectionEnd;
+    const text = this.fieldElementTarget.value;
+    const newText = text.slice(0, start) + '\t' + text.slice(start, end) + text.slice(end);
+    this.fieldElementTarget.value = newText;
+    this.fieldElementTarget.selectionStart = start + 1;
+    this.fieldElementTarget.selectionEnd = end + 1;
+  }
+
   #uploadFiles(files) {
     Array.from(files).forEach((file) => this.#uploadFile(file));
   }
