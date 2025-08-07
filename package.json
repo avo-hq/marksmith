@@ -5,7 +5,7 @@
   "license": "MIT",
   "homepage": "https://github.com/avo-hq/marksmith",
   "module": "app/assets/builds/marksmith.esm.js",
-  "version": "0.4.5",
+  "version": "0.4.7",
   "exports": {
     ".": "./dist/marksmith.esm.js",
     "./core": "./dist/marksmith-core.esm.js"

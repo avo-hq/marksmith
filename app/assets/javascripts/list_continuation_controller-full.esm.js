@@ -1,5 +1,5 @@
 /*!
-Marksmith 0.4.5
+Marksmith 0.4.7
 */
 var ListContinuationController = (function () {
     'use strict';
