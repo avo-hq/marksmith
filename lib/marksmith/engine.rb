@@ -39,7 +39,11 @@ module Marksmith
     initializer "marksmith.assets.precompile" do |app|
       if Rails.application.config.respond_to?(:assets)
         # The manifest will expose the asset files to the main app.
-        app.config.assets.precompile << "marksmith_manifest.js"
+        app.config.assets.paths << Engine.root.join("app", "assets", "stylesheets").to_s
+
+        if defined?(::Sprockets)
+          app.config.assets.precompile << "marksmith_manifest.js"
+        end
       end
     end
 
