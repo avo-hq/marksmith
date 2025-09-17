@@ -33,7 +33,8 @@ module Marksmith
         underline: true,
         highlight: true,
         quote: true,
-        with_toc_data: true
+        with_toc_data: true,
+        footnotes: true
       ).render(@body)
     end
 
