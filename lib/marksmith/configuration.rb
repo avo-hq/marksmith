@@ -1,10 +1,8 @@
 module Marksmith
   class Configuration
-    include ActiveSupport::Configurable
-
-    config_accessor(:automatically_mount_engine) { true }
-    config_accessor(:mount_path) { "/marksmith" }
-    config_accessor(:parser) { "commonmarker" }
+    class_attribute :automatically_mount_engine, default: true
+    class_attribute :mount_path, default: "/marksmith"
+    class_attribute :parser, default: "commonmarker"
   end
 
   def self.configuration
