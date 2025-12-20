@@ -15,7 +15,7 @@ class Release
 
   def perform
     # ensure_no_uncommitted_changes
-    # write_version
+    write_version
     update_copyright
     bundle
     commit
