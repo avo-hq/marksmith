@@ -292,7 +292,7 @@ GEM
     thor (1.5.0)
     timeout (0.4.3)
     tsort (0.2.0)
-    turbo-rails (2.0.13)
+    turbo-rails (2.0.23)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     tzinfo (2.0.6)
