@@ -856,6 +856,9 @@
 .ms\:items-center {
   align-items: center;
 }
+.ms\:justify-between {
+  justify-content: space-between;
+}
 .ms\:gap-1 {
   gap: calc(var(--ms-spacing) * 1);
 }

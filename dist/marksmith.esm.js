@@ -1,5 +1,5 @@
 /*!
-Marksmith 0.4.8.pre
+Marksmith 0.4.8
 */
 var __classPrivateFieldGet = (undefined && undefined.__classPrivateFieldGet) || function (receiver, state, kind, f) {
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
