@@ -46,7 +46,7 @@ module Marksmith
         "ms:h-[calc(100%+3px)] ms:border-b-none",
         # "ms:border-b-neutral-00",
         # active classes
-        "ms:[.active]:bg-neutral-50 ms:[.active]:text-neutral-900 ms:dark:[.active]:text-neutral-300 ms:[.active]:dark:bg-neutral-800 ms:[.active]:dark:border-neutral-500 ms:[.active]:rounded-t-md ms:[.active]:border-neutral-500",
+        "ms:[.active]:bg-white ms:[.active]:text-neutral-900 ms:dark:[.active]:text-neutral-300 ms:[.active]:dark:bg-neutral-800 ms:[.active]:dark:border-neutral-500 ms:[.active]:rounded-t-md ms:[.active]:border-neutral-500",
 
       )
     end
