@@ -23,6 +23,13 @@ Temporary live demo here, under the description field: [https://main.avodemo.com
 
 ## Installation
 
+#### Prerequisites
+
+Marksmith integrates with Rails apps using Stimulus controllers and Turbo Streams, so the following must already be installed and configured:
+- [`@hotwired/stimulus` package](https://github.com/hotwired/stimulus)
+- [`@hotwired/turbo` package](https://github.com/hotwired/turbo)
+- [`turbo-rails` gem](https://github.com/hotwired/turbo-rails)
+
 #### 1. Add `marksmith` to your `Gemfile`
 
 Have Bundler add it by running this command:
