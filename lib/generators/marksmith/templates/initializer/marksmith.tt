@@ -1,4 +1,8 @@
 # Marksmith.configure do |config|
 #   config.automatically_mount_engine = true
 #   config.mount_path = "/marksmith"
+#   config.parser = "commonmarker"
+#   config.redcarpet_options = {
+#     underline: false
+#   }
 # end

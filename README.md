@@ -194,6 +194,19 @@ Marksmith.configure do |config|
 end
 ```
 
+If you're using `redcarpet`, you can override the default parser flags through configuration. The defaults match the built-in behavior.
+
+```ruby
+# config/initializers/marksmith.rb
+Marksmith.configure do |config|
+  config.parser = "redcarpet"
+  config.redcarpet_options = {
+    underline: false,
+    highlight: false
+  }
+end
+```
+
 ### Add your own renderer
 
 You can completely customize the renderer by overriding the `Marksmith::Renderer` model.
