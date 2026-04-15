@@ -23,7 +23,7 @@ module Marksmith
     def render_redcarpet
       ::Redcarpet::Markdown.new(
         ::Redcarpet::Render::HTML,
-        Marksmith.configuration.redcarpet_options
+        Marksmith.configuration.redcarpet_options.to_h
       ).render(@body)
     end
 

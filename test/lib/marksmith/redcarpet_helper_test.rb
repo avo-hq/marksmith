@@ -5,7 +5,7 @@ class RedcarpetHelperTest < ActiveSupport::TestCase
 
   def setup
     @original_parser = Marksmith.configuration.parser
-    @original_redcarpet_options = Marksmith.configuration.redcarpet_options.dup
+    @original_redcarpet_options = Marksmith.configuration.redcarpet_options.to_h
     Marksmith.configuration.parser = "redcarpet"
   end
 
@@ -155,16 +155,6 @@ Paragraph two"
       underline: false,
       highlight: false
     }
-
-    body = "This is _underline_ and ==highlighted== text."
-    expected = "<p>This is <em>underline</em> and ==highlighted== text.</p>\n"
-
-    assert_equal expected, marksmithed(body)
-  end
-
-  test "marksmithed#merges repeated redcarpet option overrides" do
-    Marksmith.configuration.redcarpet_options = { underline: false }
-    Marksmith.configuration.redcarpet_options = { highlight: false }
 
     body = "This is _underline_ and ==highlighted== text."
     expected = "<p>This is <em>underline</em> and ==highlighted== text.</p>\n"

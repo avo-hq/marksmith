@@ -207,6 +207,17 @@ Marksmith.configure do |config|
 end
 ```
 
+Or override individual flags directly:
+
+```ruby
+# config/initializers/marksmith.rb
+Marksmith.configure do |config|
+  config.parser = "redcarpet"
+  config.redcarpet_options.underline = false
+  config.redcarpet_options.highlight = false
+end
+```
+
 ### Add your own renderer
 
 You can completely customize the renderer by overriding the `Marksmith::Renderer` model.
