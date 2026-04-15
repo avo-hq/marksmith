@@ -34,7 +34,9 @@ module Marksmith
       end
 
       def self.to_h
-        DEFAULTS.keys.index_with { |key| public_send(key) }
+        DEFAULTS.keys.each_with_object({}) do |key, hash|
+          hash[key] = public_send(key)
+        end
       end
     end
 
