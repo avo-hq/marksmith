@@ -15,6 +15,7 @@ class Release
 
   def perform
     # ensure_no_uncommitted_changes
+    ensure_logged_in
     write_version
     update_copyright
     bundle
@@ -38,6 +39,21 @@ class Release
 
     #   abort "❌ Uncommitted changes" unless `git status --porcelain`.empty?
     # end
+
+    def ensure_logged_in
+      puts "== Checking RubyGems and npm auth =="
+
+      credentials_path = Pathname.new(Gem.configuration.credentials_path)
+      unless credentials_path.exist? && credentials_path.read.include?(":rubygems_api_key:")
+        abort "❌ Not logged in to RubyGems — run `gem signin`"
+      end
+      puts "✅ RubyGems: credentials found at #{credentials_path}"
+
+      unless system("npm whoami", out: File::NULL, err: File::NULL)
+        abort "❌ Not logged in to npm — run `npm login`"
+      end
+      puts "✅ npm: logged in as #{`npm whoami`.strip}"
+    end
 
     def write_version
       if Gem::Version.new(version) <= Gem::Version.new(Marksmith::VERSION)
@@ -104,7 +120,6 @@ class Release
     def push_npm_package
       puts "== Pushing npm package =="
 
-      abort "❌ Must be logged in to npm" unless system "npm whoami"
       abort "❌ npm publish failed" unless system "npm publish"
 
       puts "✅ Successfully published npm release"
