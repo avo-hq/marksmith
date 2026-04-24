@@ -26,6 +26,25 @@
     <% else %>
       <%= marksmith_asset_tags %>
     <% end %>
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <style>
+      .markdown-body h1 { font-size: 1.75rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+      .markdown-body h2 { font-size: 1.4rem; font-weight: 700; margin: 1.25rem 0 0.5rem; }
+      .markdown-body h3 { font-size: 1.15rem; font-weight: 600; margin: 1rem 0 0.5rem; }
+      .markdown-body p { margin: 0.75rem 0; }
+      .markdown-body ul, .markdown-body ol { padding-left: 1.5rem; margin: 0.75rem 0; }
+      .markdown-body ul { list-style: disc; }
+      .markdown-body ol { list-style: decimal; }
+      .markdown-body a { color: #1d4ed8; text-decoration: underline; }
+      .markdown-body code { background: #f4f4f5; padding: 0.1rem 0.35rem; border-radius: 0.25rem; font-size: 0.9em; }
+      .markdown-body pre { background: #18181b; color: #f4f4f5; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0; }
+      .markdown-body pre code { background: transparent; padding: 0; color: inherit; }
+      .markdown-body blockquote { border-left: 3px solid #d4d4d8; padding-left: 1rem; color: #525252; margin: 1rem 0; }
+      .markdown-body img { max-width: 100%; border-radius: 0.5rem; margin: 1rem 0; }
+      .markdown-body hr { border: 0; border-top: 1px solid #e5e5e5; margin: 1.5rem 0; }
+    </style>
     <!--
       If using a TypeScript entrypoint file:
         vite_typescript_tag 'application'
@@ -38,7 +57,25 @@
 
   </head>
 
-  <body class="ms:dark:bg-neutral-900 ms:dark:text-neutral-50">
-    <%= yield %>
+  <body class="ms:dark:bg-neutral-900 ms:dark:text-neutral-50 bg-neutral-50 text-neutral-900 antialiased">
+    <header class="border-b border-neutral-200 bg-white">
+      <div class="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between">
+        <%= link_to "Marksmith Blog", root_path, class: "text-lg font-semibold text-neutral-900 hover:text-neutral-700" %>
+        <nav class="flex items-center gap-4 text-sm">
+          <%= link_to "All posts", posts_path, class: "text-neutral-600 hover:text-neutral-900" %>
+          <%= link_to "New post", new_post_path, class: "inline-flex items-center rounded-md bg-neutral-900 px-3 py-1.5 text-white hover:bg-neutral-800" %>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-6 py-10">
+      <% if notice.present? %>
+        <div class="mb-6 rounded-md border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+          <%= notice %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </main>
   </body>
 </html>

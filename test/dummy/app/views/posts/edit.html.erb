@@ -1,12 +1,14 @@
-<% content_for :title, "Editing post" %>
+<% content_for :title, "Editing #{@post.title}" %>
 
-<h1>Editing post</h1>
+<div class="mb-6">
+  <h1 class="text-3xl font-bold tracking-tight text-neutral-900">Editing post</h1>
+  <p class="mt-1 text-sm text-neutral-500">Update the title or body and save your changes.</p>
+</div>
 
 <%= render "form", post: @post %>
 
-<br>
-
-<div>
-  <%= link_to "Show this post", @post %> |
-  <%= link_to "Back to posts", posts_path %>
+<div class="mt-6 flex items-center gap-4 text-sm">
+  <%= link_to "View this post", @post, class: "text-neutral-700 hover:text-neutral-900 hover:underline" %>
+  <span class="text-neutral-300">·</span>
+  <%= link_to "Back to posts", posts_path, class: "text-neutral-600 hover:text-neutral-900" %>
 </div>

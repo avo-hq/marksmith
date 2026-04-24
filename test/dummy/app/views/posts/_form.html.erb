@@ -1,9 +1,15 @@
-<%= form_with(model: post) do |form| %>
-  <% if post.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= form_with(model: post, class: "space-y-6 rounded-lg border border-neutral-200 bg-white p-6 shadow-sm") do |form| %>
+  <div class="flex items-center justify-end gap-3">
+    <%= link_to "Cancel", (post.persisted? ? post : posts_path), class: "text-sm text-neutral-600 hover:text-neutral-900" %>
+    <%= form.submit class: "inline-flex items-center rounded-md bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800 cursor-pointer" %>
+  </div>
 
-      <ul>
+  <% if post.errors.any? %>
+    <div class="rounded-md border border-red-200 bg-red-50 p-4">
+      <h2 class="text-sm font-semibold text-red-800">
+        <%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:
+      </h2>
+      <ul class="mt-2 list-disc pl-5 text-sm text-red-700">
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -12,20 +18,12 @@
   <% end %>
 
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="w-full">
-    <%= form.label :body, style: "display: block" %>
-    <div style="width: 650px; resize: both; overflow: auto; padding: 10px;">
-      <%#= form.marksmith :body, disabled: false, style: "border: 1px solid red;", placeholder: "Enter your markdown body here" %>
-      <%= form.marksmith :body, enable_file_uploads: true, upload_url: nil %>
-    </div>
-
+    <%= form.label :title, class: "block text-sm font-medium text-neutral-700" %>
+    <%= form.text_field :title, class: "mt-1 block w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-neutral-900 shadow-sm focus:border-neutral-500 focus:outline-none focus:ring-1 focus:ring-neutral-500" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.label :body, class: "block text-sm font-medium text-neutral-700 mb-1" %>
+    <%= form.marksmith :body, enable_file_uploads: true, upload_url: nil %>
   </div>
 <% end %>

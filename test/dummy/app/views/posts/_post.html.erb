@@ -1,12 +1,9 @@
-<div id="<%= dom_id post %>">
-  <p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
+<article id="<%= dom_id post %>" class="rounded-lg border border-neutral-200 bg-white p-8 shadow-sm">
+  <h1 class="text-3xl font-bold tracking-tight text-neutral-900">
+    <%= post.title.presence || "Untitled" %>
+  </h1>
 
-  <p>
-    <strong>Body:</strong>
+  <div class="markdown-body mt-6 leading-relaxed text-neutral-800">
     <%== marksmithed(post.body) %>
-  </p>
-
-</div>
+  </div>
+</article>
