@@ -42,11 +42,11 @@ module Marksmith
         "marksmith-toggle-button ms:text-sm ms:hover:bg-neutral-300 ms:text-sm ms:font-medium ms:cursor-pointer ms:text-neutral-500 ms:px-3",
         # borders
         "ms:bg-transparent ms:hover:bg-transparent",
-        "ms:-my-px ms:-ml-px ms:border ms:border-transparent",
-        "ms:h-[calc(100%+3px)] ms:border-b-none",
+        "ms:-mt-px ms:-mb-px ms:-ml-px ms:border ms:border-transparent",
+        "ms:h-[calc(100%+2px)] ms:border-b-none",
         # "ms:border-b-neutral-00",
         # active classes
-        "ms:[.active]:bg-white ms:[.active]:text-neutral-900 ms:dark:[.active]:text-neutral-300 ms:[.active]:dark:bg-neutral-800 ms:[.active]:dark:border-neutral-500 ms:[.active]:rounded-t-md ms:[.active]:border-neutral-500",
+        "ms:[.active]:bg-white ms:[.active]:text-neutral-900 ms:dark:[.active]:text-neutral-300 ms:[.active]:dark:bg-neutral-800 ms:[.active]:dark:border-neutral-500 ms:[.active]:rounded-t-md ms:[.active]:border-neutral-500 ms:[.active]:border-b-transparent",
 
       )
     end

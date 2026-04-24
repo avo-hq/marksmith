@@ -1,11 +1,12 @@
 <% content_for :title, "New post" %>
 
-<h1>New post</h1>
+<div class="mb-6">
+  <h1 class="text-3xl font-bold tracking-tight text-neutral-900">New post</h1>
+  <p class="mt-1 text-sm text-neutral-500">Write something with Markdown.</p>
+</div>
 
 <%= render "form", post: @post %>
 
-<br>
-
-<div>
-  <%= link_to "Back to posts", posts_path %>
+<div class="mt-6">
+  <%= link_to "← Back to posts", posts_path, class: "text-sm text-neutral-600 hover:text-neutral-900" %>
 </div>

@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, @post.title %>
+
+<div class="mb-6 flex items-center justify-between">
+  <%= link_to "← Back to posts", posts_path, class: "text-sm text-neutral-600 hover:text-neutral-900" %>
+
+  <div class="flex items-center gap-3">
+    <%= link_to "Edit", edit_post_path(@post), class: "inline-flex items-center rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-sm font-medium text-neutral-700 hover:bg-neutral-50" %>
+    <%= button_to "Delete", @post, method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, class: "inline-flex items-center rounded-md border border-red-200 bg-white px-3 py-1.5 text-sm font-medium text-red-600 hover:bg-red-50 cursor-pointer" %>
+  </div>
+</div>
 
 <%= render @post %>
-
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
-
-  <%= button_to "Destroy this post", @post, method: :delete %>
-</div>
