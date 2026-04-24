@@ -4,7 +4,14 @@ class RedcarpetHelperTest < ActiveSupport::TestCase
   include Marksmith::MarksmithHelper
 
   def setup
+    @original_parser = Marksmith.configuration.parser
+    @original_redcarpet_options = Marksmith.configuration.redcarpet_options.to_h
     Marksmith.configuration.parser = "redcarpet"
+  end
+
+  def teardown
+    Marksmith.configuration.parser = @original_parser
+    Marksmith.configuration.redcarpet_options = @original_redcarpet_options
   end
 
   test "marksmithed#renders simple markdown" do
@@ -141,5 +148,17 @@ Paragraph two"
     expected = ""
 
     assert_equal expected, marksmithed(body.to_s)
+  end
+
+  test "marksmithed#allows overriding redcarpet options" do
+    Marksmith.configuration.redcarpet_options = {
+      underline: false,
+      highlight: false
+    }
+
+    body = "This is _underline_ and ==highlighted== text."
+    expected = "<p>This is <em>underline</em> and ==highlighted== text.</p>\n"
+
+    assert_equal expected, marksmithed(body)
   end
 end
