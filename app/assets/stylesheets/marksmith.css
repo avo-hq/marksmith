@@ -373,9 +373,6 @@
 .ms\:pointer-events-none {
   pointer-events: none;
 }
-.ms\:-my-px {
-  margin-block: -1px;
-}
 .ms\:prose {
   color: var(--tw-prose-body);
   max-width: 65ch;
@@ -791,6 +788,12 @@
     margin-bottom: 0;
   }
 }
+.ms\:-mt-px {
+  margin-top: -1px;
+}
+.ms\:-mb-px {
+  margin-bottom: -1px;
+}
 .ms\:-ml-px {
   margin-left: -1px;
 }
@@ -817,8 +820,8 @@
   width: 100%;
   height: 100%;
 }
-.ms\:h-\[calc\(100\%\+3px\)\] {
-  height: calc(100% + 3px);
+.ms\:h-\[calc\(100\%\+2px\)\] {
+  height: calc(100% + 2px);
 }
 .ms\:min-h-60 {
   min-height: calc(var(--ms-spacing) * 60);
@@ -880,6 +883,9 @@
 }
 .ms\:rounded-md {
   border-radius: var(--ms-radius-md);
+}
+.ms\:rounded-none {
+  border-radius: 0;
 }
 .ms\:rounded-t-md {
   border-top-left-radius: var(--ms-radius-md);
@@ -1131,6 +1137,11 @@
 .ms\:\[\.active\]\:border-neutral-500 {
   &:is(.active) {
     border-color: var(--ms-color-neutral-500);
+  }
+}
+.ms\:\[\.active\]\:border-b-transparent {
+  &:is(.active) {
+    border-bottom-color: transparent;
   }
 }
 .ms\:\[\.active\]\:bg-white {

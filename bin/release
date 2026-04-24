@@ -40,8 +40,6 @@ class Release
     # end
 
     def write_version
-      puts "== Writing version to files =="
-
       if Gem::Version.new(version) <= Gem::Version.new(Marksmith::VERSION)
         abort "❌ New version (#{version}) must be greater than #{Marksmith::VERSION}"
       end
