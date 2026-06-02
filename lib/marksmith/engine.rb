@@ -56,7 +56,7 @@ module Marksmith
         require "marksmith/fields/markdown_field"
 
         ActiveSupport.on_load(:avo_boot) do
-          Avo.plugin_manager.register :marksmith_field
+          Avo.plugin_manager.register :marksmith
 
           Avo.plugin_manager.register_field :markdown, Marksmith::Fields::MarkdownField
           Avo.plugin_manager.register_field :marksmith, Marksmith::Fields::MarkdownField
