@@ -2772,11 +2772,23 @@ var MarksmithController = (function (stimulus) {
       }
 
       connect() {
+        const naturallyStretchy = CSS && CSS.supports('field-sizing', 'content');
+        
         subscribe(this.fieldElementTarget);
 
         // Install all the hotkeys on the page
         for (const el of document.querySelectorAll('[data-hotkey]')) {
           install(el);
+        }
+
+        // Workaround for browsers not supporting field-sizing css property
+        if (!naturallyStretchy) {
+          this.fieldElementTarget.style.overflowY = "initial";
+          const fieldElement = this.fieldElementTarget;
+          this.fieldElementTarget.oninput = function() {
+            fieldElement.style.minHeight = "";
+            fieldElement.style.minHeight = fieldElement.scrollHeight+ "px";
+          };
         }
       }
 
