@@ -5,12 +5,23 @@ module Marksmith
     end
 
     def render
-      if Marksmith.configuration.parser == "commonmarker"
+      html = if Marksmith.configuration.parser == "commonmarker"
         render_commonmarker
       elsif Marksmith.configuration.parser == "kramdown"
         render_kramdown
       else
         render_redcarpet
+      end
+
+      render_audio(html)
+    end
+
+    def render_audio(html)
+      html = html.gsub(/<img src="([^"]+\.(?:mp3|wav|ogg|oga|m4a|aac|flac|opus|weba))"[^>]*>/i) do
+        %(<audio controls src="#{Regexp.last_match(1)}"></audio>)
+      end
+      html.gsub(%r{<a href="([^"]+\.(?:mp3|wav|ogg|oga|m4a|aac|flac|opus|weba))"[^>]*>([^<]*)</a>}i) do
+        %(<audio controls src="#{Regexp.last_match(1)}">#{Regexp.last_match(2)}</audio>)
       end
     end
 
