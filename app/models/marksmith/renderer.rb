@@ -17,7 +17,7 @@ module Marksmith
     def render_commonmarker
       # commonmarker expects an utf-8 encoded string
       body = @body.to_s.dup.force_encoding("utf-8")
-      Commonmarker.to_html(body)
+      Commonmarker.to_html(body, options: { extension: { tasklist: true } })
     end
 
     def render_redcarpet
